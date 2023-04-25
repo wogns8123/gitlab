@@ -1,0 +1,24 @@
+
+
+jasypt:
+  encryptor:
+    bean: jasyptStringEncryptor
+    property:
+      prefix: ENC(
+      suffix: )
+
+
+spring:
+#  config:
+#    activate:
+#      on-profile: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ENC(et9ctHQkIQt6airWEph33/xrMlS8gAsocRbwMF3yMevRSljWFqheOOmMCfWKLZsSV6jxUn01P20=)
+    username: ENC(G22W491zKDGs1IgM9y2Y9w==)
+    password: ENC(zl9T67mI1G61eH0KeKZWgeLD9XF8HW22)
+  jpa:
+    database: mysql
+#    database-platform: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+    hibernate.ddl-auto: update
