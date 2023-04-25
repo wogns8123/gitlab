@@ -27,8 +27,23 @@ export const SidebarBox = styled.div`
 `;
 
 export const SubjectContainer = styled.div`
-  //background-color: gray;
-  flex: 1;
+  width: 100%;
+  height: 25rem;
+  overflow: auto;
+  ::-webkit-scrollbar {
+    width: 5px; /* 스크롤바의 너비 */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    height: 30%; /* 스크롤바의 길이 */
+    background: #217af4; /* 스크롤바의 색상 */
+
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(33, 122, 244, 0.1); /*스크롤바 뒷 배경 색상*/
+  }
 `;
 
 export const SubjectBox = styled.div`
@@ -38,17 +53,41 @@ export const SubjectBox = styled.div`
 
 export const Content = styled.h4`
   width: 15rem;
-  padding: 0 0 0 0.5rem;
+  padding-left: 0.5rem;
+  margin: 1rem 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 `;
 
 export const MenuContainer = styled.div`
-  background-color: aqua;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 16rem;
   height: 10rem;
 `;
 
+export const HomeBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+`;
+
+export const HomeName = styled.h3`
+  color: #4c49ed;
+  margin-left: 1rem;
+`;
 export const LogoutBox = styled.div`
-  background-color: blueviolet;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  //background-color: blueviolet;
   width: 16rem;
   height: 3rem;
+`;
+export const LogoutName = styled.h4`
+  margin-left: 1rem;
 `;

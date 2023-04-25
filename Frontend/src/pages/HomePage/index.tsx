@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 import * as Styled from "./index.styles";
 import Sidebar from "./components/Sidebar";
 
 const HomePage = () => {
   return (
     <Styled.BodyContainer>
-      <Sidebar/>
+      <Sidebar />
     </Styled.BodyContainer>
   );
 };
