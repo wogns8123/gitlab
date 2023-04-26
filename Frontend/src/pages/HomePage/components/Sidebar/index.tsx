@@ -10,7 +10,7 @@ import {
 const Sidebar = () => {
   return (
     <Styled.SidebarContainer>
-      <Styled.LogoBox>맞G</Styled.LogoBox>
+      <Styled.LogoBox>CustomGPT</Styled.LogoBox>
       <Styled.SidebarBox>
         <Styled.SubjectContainer>
           {Array(10)
@@ -27,15 +27,24 @@ const Sidebar = () => {
         </Styled.SubjectContainer>
         <hr />
         <Styled.MenuContainer>
-          <Styled.HomeBox>
-            <IconHome height="1.5rem" width="1.5rem" fill="#4C49ED" />
-            <Styled.HomeName>HOME</Styled.HomeName>
-          </Styled.HomeBox>
+          <Styled.HomeContainer>
+            <Styled.HomeBox>
+              <IconHome height="1.5rem" width="1.5rem" fill="#4C49ED" />
+              <Styled.HomeName>HOME</Styled.HomeName>
+            </Styled.HomeBox>
+          </Styled.HomeContainer>
         </Styled.MenuContainer>
-        <Styled.LogoutBox>
-          <IconArrow height="1rem" width="1rem" />
-          <Styled.LogoutName>Log Out</Styled.LogoutName>
-        </Styled.LogoutBox>
+        <Styled.LogoutContainer>
+          <Styled.LogoutBox>
+            <IconArrow
+              height="1rem"
+              width="1rem"
+              fill="#CCCBD8"
+              className="Back"
+            />
+            <Styled.LogoutName>Log Out</Styled.LogoutName>
+          </Styled.LogoutBox>
+        </Styled.LogoutContainer>
       </Styled.SidebarBox>
     </Styled.SidebarContainer>
   );

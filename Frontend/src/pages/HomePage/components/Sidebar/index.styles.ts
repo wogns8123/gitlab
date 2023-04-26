@@ -8,7 +8,7 @@ export const SidebarContainer = styled.div`
   border-radius: 0 26px 26px 0;
   height: 95.5vh;
   width: 16rem;
-  padding: 1rem;
+  padding: 1rem 0;
 `;
 
 export const LogoBox = styled.h1`
@@ -27,22 +27,23 @@ export const SidebarBox = styled.div`
 `;
 
 export const SubjectContainer = styled.div`
-  width: 100%;
-  height: 25rem;
+  width: 87%;
+  height: 26rem;
   overflow: auto;
+  padding: 0 1rem;
   ::-webkit-scrollbar {
     width: 5px; /* 스크롤바의 너비 */
   }
 
   ::-webkit-scrollbar-thumb {
     height: 30%; /* 스크롤바의 길이 */
-    background: #217af4; /* 스크롤바의 색상 */
+    background: #e4e3ff; /* 스크롤바의 색상 */
 
     border-radius: 10px;
   }
 
   ::-webkit-scrollbar-track {
-    background: rgba(33, 122, 244, 0.1); /*스크롤바 뒷 배경 색상*/
+    background: white; /*스크롤바 뒷 배경 색상*/
   }
 `;
 
@@ -52,7 +53,7 @@ export const SubjectBox = styled.div`
 `;
 
 export const Content = styled.h4`
-  width: 15rem;
+  width: 11rem;
   padding-left: 0.5rem;
   margin: 1rem 0;
   text-overflow: ellipsis;
@@ -61,11 +62,19 @@ export const Content = styled.h4`
 `;
 
 export const MenuContainer = styled.div`
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 16rem;
-  height: 10rem;
+  width: 14rem;
+  height: 8rem;
+  padding: 0 1rem;
+`;
+
+export const HomeContainer = styled.div`
+  width: 100%;
+  background-color: #e4e3ff;
+  border-radius: 6px;
 `;
 
 export const HomeBox = styled.div`
@@ -73,21 +82,27 @@ export const HomeBox = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
-  width: 100%;
+  right: 1rem;
 `;
 
 export const HomeName = styled.h3`
   color: #4c49ed;
-  margin-left: 1rem;
+  margin: 0.7rem 0 0.7rem 1rem;
 `;
+export const LogoutContainer = styled.div`
+  width: 16rem;
+  height: 3rem;
+`;
+
 export const LogoutBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  //background-color: blueviolet;
-  width: 16rem;
-  height: 3rem;
+  position: relative;
+  right: 1rem;
 `;
+
 export const LogoutName = styled.h4`
   margin-left: 1rem;
+  color: #cccbd8;
 `;
