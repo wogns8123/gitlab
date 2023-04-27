@@ -2,14 +2,11 @@ package com.gpt.backend.domain.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.Table;
-
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
-//@Table(name = "title")
 @Getter
 @Setter
 public class Title {
@@ -17,6 +14,10 @@ public class Title {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long title_id;
 
-    @OneToMany(mappedBy = "title_id")
-    private Set<Req> reqs;
+    @ManyToOne
+    @JoinColumn(name = "email")
+    private User user;
+
+    @OneToMany(mappedBy = "title")
+    private List<Req> reqs;
 }
