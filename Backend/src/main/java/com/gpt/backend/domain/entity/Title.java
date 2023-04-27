@@ -20,4 +20,7 @@ public class Title {
 
     @OneToMany(mappedBy = "title")
     private List<Req> reqs;
+
+    @Column(nullable = false)
+    private String title;
 }
