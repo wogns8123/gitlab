@@ -17,8 +17,10 @@ public class User {
     @Column(nullable = false)
     private String email;
 
-    @OneToMany(mappedBy = "user")
-    private List<Title> titles;
+    
+// 양방향용    
+//    @OneToMany(mappedBy = "user")
+//    private List<Title> titles;
 
 //    @Column(name = "refresh_token")
 //    private String refreshToken;

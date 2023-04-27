@@ -18,8 +18,9 @@ public class Title {
     @JoinColumn(name = "email")
     private User user;
 
-    @OneToMany(mappedBy = "title")
-    private List<Req> reqs;
+// 양방향용
+//    @OneToMany(mappedBy = "title")
+//    private List<Req> reqs;
 
     @Column(nullable = false)
     private String title;
