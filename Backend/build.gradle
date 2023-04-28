@@ -24,12 +24,20 @@ dependencies {
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	runtimeOnly 'com.h2database:h2'
 
+	// SpringSecurity
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+	// Google Login
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
+	// jwt
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
 
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.4'
+	implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5'
 }
 
 tasks.named('test') {

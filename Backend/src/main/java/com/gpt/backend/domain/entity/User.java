@@ -22,6 +22,9 @@ public class User {
 //    @OneToMany(mappedBy = "user")
 //    private List<Title> titles;
 
-//    @Column(name = "refresh_token")
-//    private String refreshToken;
+    @Column
+    private String nickname;
+
+    @Column(name = "refresh_token")
+    private String refreshToken;
 }

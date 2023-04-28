@@ -19,6 +19,19 @@ spring:
     password: ENC(zl9T67mI1G61eH0KeKZWgeLD9XF8HW22)
   jpa:
     database: mysql
-#    database-platform: org.hibernate.dialect.MySQL8Dialect
+    #    database-platform: org.hibernate.dialect.MySQL8Dialect
     show-sql: true
     hibernate.ddl-auto: update
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 617082677677-idivlihifot2fp2lppt7qer5kamf7lgb.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+              - email
+              - profile
+  jwt:
+    secret: gjslqhtakwg!
