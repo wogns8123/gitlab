@@ -1,11 +1,19 @@
-import React from 'react';
+import React from "react";
+import * as Styled from "./index.styles";
+import GoogleLoginButton from "./components/GoogleLoginButton";
 
 const IntroPage = () => {
-    return (
-        <div>
-            <h1>IntroPage</h1>
-        </div>
-    );
+  return (
+    <Styled.BodyContainer>
+      <Styled.TitleContainer>
+        <Styled.SubTitle>싸피인을 위한</Styled.SubTitle>
+        <Styled.Title>CustomGPT</Styled.Title>
+      </Styled.TitleContainer>
+      <Styled.LoginBox>
+        <GoogleLoginButton />
+      </Styled.LoginBox>
+    </Styled.BodyContainer>
+  );
 };
 
 export default IntroPage;
