@@ -7,7 +7,6 @@ export const BodyContainer = styled.div`
   background-size: cover;
   height: 100vh;
   width: 100vw;
-  //filter: grayscale(100%);
 `;
 
 export const TitleContainer = styled.div`
