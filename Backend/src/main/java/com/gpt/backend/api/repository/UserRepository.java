@@ -1,6 +1,6 @@
-package com.gpt.backend.repository;
+package com.gpt.backend.api.repository;
 
-import com.gpt.backend.domain.entity.User;
+import com.gpt.backend.api.domain.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

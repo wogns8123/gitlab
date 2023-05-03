@@ -1,6 +1,6 @@
 package com.gpt.backend.config.oauth;
 
-import com.gpt.backend.domain.entity.dto.UserDto;
+import com.gpt.backend.api.domain.dto.UserDto;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Component;
 

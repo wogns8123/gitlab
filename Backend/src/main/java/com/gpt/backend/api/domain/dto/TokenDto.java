@@ -1,4 +1,4 @@
-package com.gpt.backend.domain.entity.dto;
+package com.gpt.backend.api.domain.dto;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;

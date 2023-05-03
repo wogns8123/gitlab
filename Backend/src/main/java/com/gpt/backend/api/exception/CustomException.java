@@ -1,6 +1,6 @@
-package com.gpt.backend.exception;
+package com.gpt.backend.api.exception;
 
-import com.gpt.backend.domain.entity.enums.ErrorCode;
+import com.gpt.backend.api.domain.enums.ErrorCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

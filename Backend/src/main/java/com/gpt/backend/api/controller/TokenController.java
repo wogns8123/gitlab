@@ -1,8 +1,8 @@
-package com.gpt.backend.controller;
+package com.gpt.backend.api.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gpt.backend.config.jwt.JwtTokenProvider;
-import com.gpt.backend.domain.entity.dto.TokenDto;
+import com.gpt.backend.api.domain.dto.TokenDto;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

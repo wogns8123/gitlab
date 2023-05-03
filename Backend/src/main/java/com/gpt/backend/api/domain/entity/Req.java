@@ -1,4 +1,4 @@
-package com.gpt.backend.domain.entity;
+package com.gpt.backend.api.domain.entity;
 
 import lombok.Getter;
 import lombok.Setter;
