@@ -2,13 +2,19 @@ import React, { KeyboardEvent, ChangeEvent } from "react";
 import * as Styled from "./index.styles";
 import { IconSend } from "../../../../common/icons";
 import { Axios } from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { saveMessage } from "_actions/message_actions";
 
 const GPTfunction = () => {
+  const dispatch = useDispatch();
+  const messagesFromRedux = useSelector((state: any) => state.messages);
   const textQuery = async (text: string) => {
     let conversation = {
       who: "user",
       content: text,
     };
+
+    dispatch(saveMessage(conversation));
     console.log(conversation);
 
     const textQueryVariables = {
@@ -23,11 +29,15 @@ const GPTfunction = () => {
       //   who: "GTP",
       //   content: content,
       // };
+
+      dispatch(saveMessage(conversation));
     } catch (error) {
       conversation = {
         who: "GTP",
         content: "에러가 발생했습니다",
       };
+
+      dispatch(saveMessage(conversation));
     }
   };
 
