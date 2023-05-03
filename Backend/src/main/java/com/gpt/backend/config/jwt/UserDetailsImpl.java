@@ -1,6 +1,6 @@
 package com.gpt.backend.config.jwt;
 
-import com.gpt.backend.domain.entity.User;
+import com.gpt.backend.api.domain.entity.User;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

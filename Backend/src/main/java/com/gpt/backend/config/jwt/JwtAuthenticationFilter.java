@@ -1,9 +1,9 @@
 package com.gpt.backend.config.jwt;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.gpt.backend.domain.entity.dto.TokenDto;
-import com.gpt.backend.domain.entity.enums.ErrorCode;
-import com.gpt.backend.exception.CustomException;
+import com.gpt.backend.api.domain.dto.TokenDto;
+import com.gpt.backend.api.domain.enums.ErrorCode;
+import com.gpt.backend.api.exception.CustomException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;

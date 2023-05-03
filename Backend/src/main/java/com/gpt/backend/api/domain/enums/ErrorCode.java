@@ -1,4 +1,4 @@
-package com.gpt.backend.domain.entity.enums;
+package com.gpt.backend.api.domain.enums;
 
 import lombok.Getter;
 

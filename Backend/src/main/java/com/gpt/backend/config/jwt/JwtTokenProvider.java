@@ -1,7 +1,7 @@
 package com.gpt.backend.config.jwt;
 
-import com.gpt.backend.domain.entity.dto.TokenDto;
-import com.gpt.backend.repository.UserRepository;
+import com.gpt.backend.api.domain.dto.TokenDto;
+import com.gpt.backend.api.repository.UserRepository;
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;

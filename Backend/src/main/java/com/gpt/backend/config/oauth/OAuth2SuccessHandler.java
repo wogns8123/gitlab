@@ -1,10 +1,10 @@
 package com.gpt.backend.config.oauth;
 
 import com.gpt.backend.config.jwt.JwtTokenProvider;
-import com.gpt.backend.domain.entity.User;
-import com.gpt.backend.domain.entity.dto.TokenDto;
-import com.gpt.backend.domain.entity.dto.UserDto;
-import com.gpt.backend.repository.UserRepository;
+import com.gpt.backend.api.domain.entity.User;
+import com.gpt.backend.api.domain.dto.TokenDto;
+import com.gpt.backend.api.domain.dto.UserDto;
+import com.gpt.backend.api.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
@@ -72,7 +72,8 @@ public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
 
         if(savedRequest != null) { // 권한없는 페이지 요청했을 경우
             String savedUrl = savedRequest.getRedirectUrl();
-            String targetUrl = UriComponentsBuilder.fromUriString("http://k8e102.p.ssafy.io" + savedUrl)
+//            String targetUrl = UriComponentsBuilder.fromUriString("http://k8e102.p.ssafy.io" + savedUrl)
+            String targetUrl = UriComponentsBuilder.fromUriString("http://localhost:3000" + savedUrl)
                     .queryParam("access_token", tokenDto.getAccessToken())
                     .queryParam("refresh_token", tokenDto.getRefreshToken())
                     .queryParam("expiration_date", tokenDto.getAccessTokenExpiresIn())
@@ -82,7 +83,8 @@ public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
 
             redirectStrategy.sendRedirect(request, response, targetUrl);
         } else { // 소셜로그인 요청일 경우
-            String targetUrl = UriComponentsBuilder.fromUriString("http://k8e102.p.ssafy.io")
+//            String targetUrl = UriComponentsBuilder.fromUriString("http://k8e102.p.ssafy.io")
+            String targetUrl = UriComponentsBuilder.fromUriString("http://localhost:3000")
                     .queryParam("access_token", tokenDto.getAccessToken())
                     .queryParam("refresh_token", tokenDto.getRefreshToken())
                     .queryParam("expiration_date", tokenDto.getAccessTokenExpiresIn())

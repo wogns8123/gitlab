@@ -1,6 +1,6 @@
 package com.gpt.backend.config.jwt;
 
-import com.gpt.backend.repository.UserRepository;
+import com.gpt.backend.api.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
