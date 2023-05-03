@@ -28,10 +28,10 @@ spring:
       client:
         registration:
           google:
-            client-id: 617082677677-idivlihifot2fp2lppt7qer5kamf7lgb.apps.googleusercontent.com
-            client-secret: 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
+            client-id: ENC(vUzdxxQaj8a21jlJj4DCnNt2mTOyqzpv7C7yyKS0ZcO2HR54CnQ73q4/TXvACM2vZMDvb3l7p1lQUXYlOauSH30slwHVKllcWYpjjVEOcvVaD12Qb8c2MQ==)
+            client-secret: ENC(Wv5CgfLQaOFsIe+OMBR4w6ftFGqDQFrc3VrK096ZsjoQF5s2nV0IMwuUnDrFBVo1)
             scope:
               - email
               - profile
   jwt:
-    secret: gjslqhtakwg!
+    secret: ENC(sxRsIghznUT52dlCA+eYZKN/2XyzRDSq)
