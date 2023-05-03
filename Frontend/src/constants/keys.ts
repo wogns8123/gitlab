@@ -1,6 +1,6 @@
 const CLIENT_KEY = {
   GOOGLE:
-    "638253521394-rhu7e0oal5g6a0l2slj2udrfc9jr4emh.apps.googleusercontent.com",
+    "617082677677-idivlihifot2fp2lppt7qer5kamf7lgb.apps.googleusercontent.com",
 };
 
 export default CLIENT_KEY;
