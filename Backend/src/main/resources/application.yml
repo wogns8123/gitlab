@@ -35,3 +35,7 @@ spring:
               - profile
   jwt:
     secret: ENC(sxRsIghznUT52dlCA+eYZKN/2XyzRDSq)
+
+gpu:
+  server:
+    url: http://70.12.130.121
