@@ -18,7 +18,7 @@ const GoogleLoginButton = () => {
             navigate('/home')
           }}
           onError={() => {
-            console.log("로그인 실  패");
+            console.log("로그인 실패");
           }}
         />
       </GoogleOAuthProvider>
