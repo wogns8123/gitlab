@@ -19,7 +19,7 @@ public class Req {
     private Title title;
 
     @Column
-    private String question;
+    private String chat;
     @Column
     private String answer;
 
