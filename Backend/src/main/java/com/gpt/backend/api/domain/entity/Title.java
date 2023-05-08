@@ -14,7 +14,7 @@ public class Title {
     private Long title_id;
 
     @ManyToOne
-    @JoinColumn(name = "email")
+    @JoinColumn(name = "user_id")
     private User user;
 
 // 양방향용
