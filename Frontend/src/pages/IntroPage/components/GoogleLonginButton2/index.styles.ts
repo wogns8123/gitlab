@@ -9,6 +9,9 @@ export const Button = styled.button`
   border-radius: 5px;
   width: 14rem;
   height: 2.5rem;
+  &:hover{
+    cursor:pointer;
+  }
 `;
 
 export const Text = styled.h5`

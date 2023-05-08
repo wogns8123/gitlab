@@ -80,7 +80,7 @@ export const IconBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #4C49ED;
+  background-color: #4c49ed;
   height: 2rem;
   width: 2rem;
   border-radius: 6px;
@@ -95,16 +95,17 @@ export const Text = styled.div`
   width: 39.5rem;
   padding: 1rem;
   border-radius: 10px;
-  line-height : 2em;
+  line-height: 2em;
 `;
 export const UserText = styled(Text)`
-  background-color: #4C49ED;
+  //display: flex;
+  //flex-direction: row-reverse;
+  background-color: #4c49ed;
   color: white;
   position: relative;
   left: 23rem;
 `;
 
 export const GPTText = styled(Text)`
-  background-color: #E4E3FF;
-  
+  background-color: #e4e3ff;
 `;
