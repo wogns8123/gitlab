@@ -1,6 +1,5 @@
 import React from "react";
 import * as Styled from "./index.styles";
-import GoogleLoginButton from "./components/GoogleLoginButton";
 import GoogleLoginButton2 from "./components/GoogleLonginButton2";
 
 const IntroPage = () => {
@@ -11,7 +10,6 @@ const IntroPage = () => {
         <Styled.Title>CustomGPT</Styled.Title>
       </Styled.TitleContainer>
       <Styled.LoginBox>
-        {/*<GoogleLoginButton />*/}
         <GoogleLoginButton2/>
       </Styled.LoginBox>
     </Styled.BodyContainer>

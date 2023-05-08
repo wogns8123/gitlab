@@ -21,7 +21,7 @@ export const SubName = styled.h2`
 `;
 
 export const InputBox = styled.div`
-  //background-color: gray;
+  background-color: white;
   display: flex;
   align-items: center;
   border: 1px solid;
@@ -30,7 +30,7 @@ export const InputBox = styled.div`
   border-radius: 6px;
   box-shadow: 1px 1px 5px 3px #e5e5e5;
   position: fixed;
-  top: 36rem;
+  top: 37rem;
 `;
 
 export const Input = styled.input`
@@ -43,4 +43,68 @@ export const Input = styled.input`
   &:focus {
     outline: none !important;
   }
+`;
+
+export const Content = styled.div`
+  //background-color: gray;
+  height: 34.5rem;
+  width: 65rem;
+  margin-top: 2rem;
+  overflow: auto;
+  ::-webkit-scrollbar {
+    width: 5px; /* 스크롤바의 너비 */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    height: 30%; /* 스크롤바의 길이 */
+    background: #e4e3ff; /* 스크롤바의 색상 */
+
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: white; /*스크롤바 뒷 배경 색상*/
+  }
+`;
+
+export const GPTContainer = styled.div`
+  margin: 2.5rem 0;
+`;
+
+export const NameContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+`;
+export const IconBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #4C49ED;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 6px;
+`;
+
+export const Logo = styled.h4`
+  margin: 0 0.5rem;
+`;
+
+export const Text = styled.div`
+  height: auto;
+  width: 39.5rem;
+  padding: 1rem;
+  border-radius: 10px;
+  line-height : 2em;
+`;
+export const UserText = styled(Text)`
+  background-color: #4C49ED;
+  color: white;
+  position: relative;
+  left: 23rem;
+`;
+
+export const GPTText = styled(Text)`
+  background-color: #E4E3FF;
+  
 `;
