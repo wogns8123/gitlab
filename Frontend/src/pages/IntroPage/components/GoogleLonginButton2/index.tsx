@@ -5,7 +5,7 @@ import {IconGoogle} from "../../../../common/icons";
 const GoogleLoginButton2 = () => {
   const onClick = () => {
     // window.location.href = "http://localhost:8080/api/oauth2/authorization/google"
-    window.location.href = "https://customgptchat.com/api/oauth2/authorization/google"
+    window.location.href = "http://k8e102.p.ssafy.io:8080/api/oauth2/authorization/google"
   }
 
   return (
