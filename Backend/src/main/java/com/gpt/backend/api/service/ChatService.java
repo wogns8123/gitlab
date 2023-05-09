@@ -82,12 +82,11 @@ public class ChatService {
         // userId와 일치하면
         Long userId = userRepository.findByEmail(email).get().getUserId();
         if (titleRepository.findUserIdByTitleId(titleId).equals(userId)) {
-//            // 값을 찾아서
-//            FavFilter searchTitle = titleRepository.findByTitleId(request.getId());
-//            // System.out.println(searchRecomm);
-//            // FavFilter(id=3, email=qwer, first=치안, second=지하철, third=마트, fourth=초등학교, fifth=null)
-//            // 삭제
-//            recommRepository.delete(searchRecomm);
+            // 값을 찾아서
+            Title searchTitle = titleRepository.findByTitleId(titleId).get();
+            // System.out.println(searchTitle);
+            // 삭제
+            titleRepository.delete(searchTitle);
         }
         return null;
     }

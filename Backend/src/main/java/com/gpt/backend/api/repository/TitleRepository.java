@@ -1,6 +1,7 @@
 package com.gpt.backend.api.repository;
 
 import com.gpt.backend.api.domain.entity.Title;
+import com.gpt.backend.api.domain.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Repository
@@ -22,5 +24,7 @@ public interface TitleRepository extends JpaRepository<Title, Long> {
     @Query("SELECT t.user.userId FROM Title t WHERE t.titleId = :titleId")
     Long findUserIdByTitleId(@Param("titleId") Long titleId);
 
+    // titleId로 레코드 찾기
+    Optional<Title> findByTitleId(Long titleId);
 
 }
