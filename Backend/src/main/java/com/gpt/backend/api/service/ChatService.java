@@ -6,36 +6,47 @@ import com.gpt.backend.api.domain.entity.Req;
 import com.gpt.backend.api.domain.entity.Title;
 import com.gpt.backend.api.repository.ReqRepository;
 import com.gpt.backend.api.repository.TitleRepository;
+import com.gpt.backend.api.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ChatService {
 
     @Autowired
     private TitleRepository titleRepository;
+    @Autowired
+    private ReqRepository reqRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-    // Title 기록 조회
-    public List<Object> getAllTitlesByEmail(String email) {
-        List<Object> resultList = new ArrayList<>();
+    // Title 기록 및 닉네임 조회
+    public Map<String, Object> getAllTitlesByEmail(String email) {
+        List<TitleDto> titlesList = new ArrayList<>();
         List<Title> titles = titleRepository.findTitlesByEmail(email);
 
         for (Title title : titles) {
             Long title_id = title.getTitle_id();
             String titleText = title.getTitle();
 
-            resultList.add(new TitleDto(title_id, titleText));
+            titlesList.add(new TitleDto(title_id, titleText));
         }
 
-        return resultList;
+        String nickname = userRepository.findByEmail(email).get().getNickname();
+
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("nickname", nickname);
+        resultMap.put("titles", titlesList);
+
+        return resultMap;
     }
 
 
-    @Autowired
-    private ReqRepository reqRepository;
     // 대화 내역 조회
     public List<Object> getAllChatsByTitle_id(String email, Long title_id) {
         // title_id와 email 같은 지 확인

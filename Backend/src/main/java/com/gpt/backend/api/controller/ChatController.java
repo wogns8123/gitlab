@@ -24,7 +24,7 @@ public class ChatController {
     private ChatService chatService;
 
     @GetMapping("")
-    @ApiOperation(value = "Title 기록 조회 api", notes = "Title 기록 조회 api")
+    @ApiOperation(value = "Title 기록 및 닉네임 조회 api", notes = "Title 기록 및 닉네임 조회 api")
     public ResponseEntity<Object> getAllTitlesByEmail(Principal principal) {
         try{
             return new ResponseEntity<>(chatService.getAllTitlesByEmail(principal.getName()), HttpStatus.OK);
