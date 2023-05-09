@@ -1,17 +1,19 @@
 package com.gpt.backend.api.domain.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Title {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long title_id;
+    private Long titleId;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

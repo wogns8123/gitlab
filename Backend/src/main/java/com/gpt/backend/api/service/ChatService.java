@@ -1,43 +1,49 @@
 package com.gpt.backend.api.service;
 
+import com.gpt.backend.api.domain.dto.ChatRequestDto;
+import com.gpt.backend.api.domain.dto.ChatRespDto;
 import com.gpt.backend.api.domain.dto.response.ReqDto;
 import com.gpt.backend.api.domain.dto.response.TitleDto;
 import com.gpt.backend.api.domain.entity.Req;
 import com.gpt.backend.api.domain.entity.Title;
+import com.gpt.backend.api.domain.entity.User;
 import com.gpt.backend.api.repository.ReqRepository;
 import com.gpt.backend.api.repository.TitleRepository;
 import com.gpt.backend.api.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
+import javax.transaction.Transactional;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Transactional
 @Service
+@RequiredArgsConstructor
+@Slf4j
 public class ChatService {
 
-    @Autowired
-    private TitleRepository titleRepository;
-    @Autowired
-    private ReqRepository reqRepository;
-    @Autowired
-    private UserRepository userRepository;
+    private final ReqRepository reqRepository;
+    private final TitleRepository titleRepository;
+    private final UserRepository userRepository;
+
 
     // Title 기록 및 닉네임 조회
     public Map<String, Object> getAllTitlesByEmail(String email) {
         // email로 userId 찾기
-        Long userId = userRepository.findByEmail(email).get().getUser_id();
+        Long userId = userRepository.findByEmail(email).get().getUserId();
 
         List<TitleDto> titlesList = new ArrayList<>();
         List<Title> titles = titleRepository.findTitlesByUserID(userId);
 
         for (Title title : titles) {
-            Long title_id = title.getTitle_id();
+            Long titleId = title.getTitleId();
             String titleText = title.getTitle();
 
-            titlesList.add(new TitleDto(title_id, titleText));
+            titlesList.add(new TitleDto(titleId, titleText));
         }
 
         String nickname = userRepository.findByEmail(email).get().getNickname();
@@ -51,19 +57,19 @@ public class ChatService {
 
 
     // 대화 내역 조회
-    public List<Object> getAllChatsByTitle_id(String email, Long title_id) {
-        // title_id와 userId 같은 지 확인
-        Long userId = userRepository.findByEmail(email).get().getUser_id();
-        if (titleRepository.findUserIdByTitleId(title_id).equals(userId)) {
+    public List<Object> getAllChatsByTitleId(String email, Long titleId) {
+        // titleId와 userId 같은 지 확인
+        Long userId = userRepository.findByEmail(email).get().getUserId();
+        if (titleRepository.findUserIdByTitleId(titleId).equals(userId)) {
             List<Object> resultList = new ArrayList<>();
-            List<Req> reqs = reqRepository.findReqsByTitle_id(title_id);
+            List<Req> reqs = reqRepository.findReqsByTitleId(titleId);
 
             for (Req req : reqs) {
-                Long request_id = req.getRequest_id();
+                Long requestId = req.getRequestId();
                 String chat = req.getChat();
                 String answer = req.getAnswer();
 
-                resultList.add(new ReqDto(request_id, chat, answer));
+                resultList.add(new ReqDto(requestId, chat, answer));
             }
             return resultList;
         }else {
@@ -71,12 +77,11 @@ public class ChatService {
         }
     }
 
-
     // 타이틀 삭제
-    public List<Object> deleteTitleByTitleId(String email, Long title_id) {
+    public List<Object> deleteTitleByTitleId(String email, Long titleId) {
         // userId와 일치하면
-        Long userId = userRepository.findByEmail(email).get().getUser_id();
-        if (titleRepository.findUserIdByTitleId(title_id).equals(userId)) {
+        Long userId = userRepository.findByEmail(email).get().getUserId();
+        if (titleRepository.findUserIdByTitleId(titleId).equals(userId)) {
 //            // 값을 찾아서
 //            FavFilter searchTitle = titleRepository.findByTitleId(request.getId());
 //            // System.out.println(searchRecomm);
@@ -85,5 +90,34 @@ public class ChatService {
 //            recommRepository.delete(searchRecomm);
         }
         return null;
+    }
+
+    public ChatRespDto inputChat(ChatRequestDto dto, Principal principal) {
+        if (dto.getTitleId() == null) {
+            User user = userRepository.findByEmail(principal.getName())
+                    .orElseThrow(() -> new IllegalArgumentException("해당 유저가 없습니다."));
+            Title title = titleRepository.save(Title.builder()
+                    .user(user)
+                    .title(dto.getChat())
+                    .build());
+            dto.setTitleId(title.getTitleId());
+            //TODO Req에 채팅내역저장
+        }
+
+        String answer = "GPU요청 후 받은 값";
+        Title title = titleRepository.findById(dto.getTitleId())
+                .orElseThrow(() -> new IllegalArgumentException("해당 제목이 없습니다."));
+        reqRepository.save(Req.builder()
+                .chat(dto.getChat())
+                .answer(answer)
+                .title(title)
+                .build());
+
+        log.info("CHAT SAVED");
+        return ChatRespDto.builder()
+                .answer(answer)
+                .titleId(dto.getTitleId())
+                .title(title.getTitle())
+                .build();
     }
 }
