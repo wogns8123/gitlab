@@ -14,7 +14,7 @@ import java.util.List;
 @Transactional
 public interface ReqRepository extends JpaRepository<Req, Long> {
 
-    @Query("SELECT r FROM Req r WHERE r.title.title_id = :title_id")
-    List<Req> findReqsByTitle_id(@Param("title_id") Long title_id);
+    @Query("SELECT r FROM Req r WHERE r.title.titleId = :titleId")
+    List<Req> findReqsByTitleId(@Param("titleId") Long titleId);
 
 }
