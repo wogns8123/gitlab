@@ -24,8 +24,8 @@ public class ChatController {
 
     @PostMapping
     public ResponseEntity<ChatRespDto> inputChat(@RequestBody ChatRequestDto dto, Principal principal) {
-        chatService.inputChat(dto, principal);
-        return new ResponseEntity<>(new ChatRespDto(), HttpStatus.OK);
+        ChatRespDto resp = chatService.inputChat(dto, principal);
+        return new ResponseEntity<>(resp, HttpStatus.OK);
 
     }
 }
