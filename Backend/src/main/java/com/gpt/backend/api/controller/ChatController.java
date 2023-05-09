@@ -8,10 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
@@ -43,6 +40,14 @@ public class ChatController {
         }
     }
 
-
+    @DeleteMapping("/{title_id}")
+    @ApiOperation(value = "타이틀 삭제 api", notes = "타이틀 삭제 api")
+    public ResponseEntity<Object> deleteTitleByTitleId(Principal principal, @PathVariable Long title_id) {
+        try{
+            return new ResponseEntity<>(chatService.deleteTitleByTitleId(principal.getName(), title_id), HttpStatus.OK);
+        }catch (Exception e){
+            throw new CustomException(ErrorCode.UNKNOWN_ERROR);
+        }
+    }
 
 }

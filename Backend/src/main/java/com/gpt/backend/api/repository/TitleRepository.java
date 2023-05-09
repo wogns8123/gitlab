@@ -14,11 +14,13 @@ import java.util.List;
 @Transactional
 public interface TitleRepository extends JpaRepository<Title, Long> {
 
-    // email로 모든 title 찾기
-    @Query("SELECT t FROM Title t WHERE t.user.email = :email")
-    List<Title> findTitlesByEmail(@Param("email") String email);
+    // user_id로 모든 title 찾기
+    @Query("SELECT t FROM Title t WHERE t.user.user_id = :user_id")
+    List<Title> findTitlesByUserID(@Param("user_id") Long user_id);
 
-    // title_id로 email 찾기
-    @Query("SELECT t.user.email FROM Title t WHERE t.title_id = :title_id")
-    String findEmailByTitle_id(@Param("title_id") Long title_id);
+    // title_id로 user_id 찾기
+    @Query("SELECT t.user.user_id FROM Title t WHERE t.title_id = :title_id")
+    Long findUserIdByTitleId(@Param("title_id") Long title_id);
+
+
 }
