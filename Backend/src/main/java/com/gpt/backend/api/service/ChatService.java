@@ -29,7 +29,7 @@ public class ChatService {
     private final ReqRepository reqRepository;
     private final TitleRepository titleRepository;
     private final UserRepository userRepository;
-
+    private final PapagoTranslateService papagoTranslateService;
 
     // Title 기록 및 닉네임 조회
     public Map<String, Object> getAllTitlesByEmail(String email) {
@@ -103,7 +103,7 @@ public class ChatService {
             //TODO Req에 채팅내역저장
         }
 
-        String answer = "GPU요청 후 받은 값";
+        String answer = papagoTranslateService.translate("ko", "en", dto.getChat());
         Title title = titleRepository.findById(dto.getTitleId())
                 .orElseThrow(() -> new IllegalArgumentException("해당 제목이 없습니다."));
         reqRepository.save(Req.builder()
