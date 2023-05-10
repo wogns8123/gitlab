@@ -18,10 +18,10 @@ public class GpuService {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders header = new HttpHeaders();
         header.setContentType(MediaType.APPLICATION_JSON);
-        MultiValueMap<String, String> requestBody = new LinkedMultiValueMap<>();
         log.info(GPU_API_URL);
-        requestBody.add("text", text);
-        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(requestBody, header);
+        JSONObject requestBody = new JSONObject();
+        requestBody.put("text", text);
+        HttpEntity<String> request = new HttpEntity<>(requestBody.toString(), header);
         ResponseEntity<String> response = restTemplate.postForEntity(GPU_API_URL, request, String.class);
 
         if(response.getStatusCode() == HttpStatus.OK){
