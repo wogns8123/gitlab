@@ -1,15 +1,14 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import * as Styled from "./index.styles";
 import Sidebar from "./components/Sidebar";
 import GPTfunction from "./components/GPTfunction";
 
 const HomePage = () => {
-
   useEffect(() => {
-    const searchParams = new URLSearchParams(window.location.search)
-    let access_token = searchParams.get("access_token");
-    if (access_token) {
-      localStorage.setItem('access_token',access_token)
+    const searchParams = new URLSearchParams(window.location.search);
+    let accessToken = searchParams.get("access_token");
+    if (accessToken) {
+      localStorage.setItem("accessToken", accessToken);
     }
   }, []);
 

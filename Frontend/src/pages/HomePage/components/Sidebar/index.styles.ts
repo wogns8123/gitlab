@@ -47,6 +47,15 @@ export const SubjectContainer = styled.div`
   }
 `;
 
+export const SubjectContentBox = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
 export const SubjectBox = styled.div`
   display: flex;
   align-items: center;
@@ -55,7 +64,7 @@ export const SubjectBox = styled.div`
 export const Content = styled.h4`
   width: 11rem;
   padding-left: 0.5rem;
-  margin: 1rem 0;
+  margin: 0;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;

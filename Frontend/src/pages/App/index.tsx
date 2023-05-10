@@ -1,11 +1,11 @@
-import React, {Suspense} from "react";
+import React, { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import * as Styled from "./index.styles";
 import { Provider } from "react-redux";
 import { applyMiddleware, createStore } from "redux";
 import promiseMiddleware from "redux-promise";
 import ReduxThunk from "redux-thunk";
-import Reducer from "_reducers/message_reducer";
+import Reducer from "_reducers/reducer";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 const App = () => {
