@@ -30,6 +30,7 @@ public class ChatService {
     private final TitleRepository titleRepository;
     private final UserRepository userRepository;
     private final PapagoTranslateService papagoTranslateService;
+    private final GpuService gpuService;
 
     // Title 기록 및 닉네임 조회
     public Map<String, Object> getAllTitlesByEmail(String email) {
@@ -103,7 +104,10 @@ public class ChatService {
             //TODO Req에 채팅내역저장
         }
 
+
+
         String answer = papagoTranslateService.translate("ko", "en", dto.getChat());
+        answer = gpuService.calculate(answer);
         Title title = titleRepository.findById(dto.getTitleId())
                 .orElseThrow(() -> new IllegalArgumentException("해당 제목이 없습니다."));
         reqRepository.save(Req.builder()
@@ -111,6 +115,7 @@ public class ChatService {
                 .answer(answer)
                 .title(title)
                 .build());
+
 
         log.info("CHAT SAVED");
         return ChatRespDto.builder()
