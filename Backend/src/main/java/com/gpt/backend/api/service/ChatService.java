@@ -104,8 +104,6 @@ public class ChatService {
             //TODO Req에 채팅내역저장
         }
 
-
-
         String answer = papagoTranslateService.translate("ko", "en", dto.getChat());
         answer = gpuService.calculate(answer);
         Title title = titleRepository.findById(dto.getTitleId())

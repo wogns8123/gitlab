@@ -22,7 +22,7 @@ public class GpuService {
         log.info(GPU_API_URL);
         requestBody.add("text", text);
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(requestBody, header);
-        ResponseEntity<String> response = restTemplate.exchange(GPU_API_URL, HttpMethod.POST, request, String.class);
+        ResponseEntity<String> response = restTemplate.postForEntity(GPU_API_URL, request, String.class);
 
         if(response.getStatusCode() == HttpStatus.OK){
             JSONObject jo = new org.json.JSONObject(response.getBody());
