@@ -1,46 +1,52 @@
 import React, {
   KeyboardEvent,
   ChangeEvent,
-  useRef,
   useEffect,
   useState,
+  useRef,
 } from "react";
 import * as Styled from "./index.styles";
 import { IconChat, IconSend } from "../../../../common/icons";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { saveMessage } from "_actions/message_actions";
 import URLS from "../../../../constants/url";
-import localstorage from "../../../../constants/localstorage";
+import { saveId } from "../../../../_actions/id_actions";
 
 const GPTfunction = () => {
   const dispatch = useDispatch();
+  const scrollRef = useRef<HTMLDivElement>(null);
   const idFromRedux = useSelector((state: any) => state.id);
   const [chat, setChat] = useState([]);
-  const messagesFromRedux = useSelector((state: any) => state.messages);
+  const [refresh, setRefresh] = useState(false);
   const textQuery = async (text: string) => {
+    const searchParams = new URLSearchParams(window.location.search);
+    let accessToken = searchParams.get("refresh_token");
     if (idFromRedux) {
       const textQueryVariables = {
         chat: text,
         titleId: idFromRedux,
       };
-      const res = await axios.post(`${URLS.API}/api/chat`, textQueryVariables, {
+      await axios.post(`${URLS.API}/api/chat`, textQueryVariables, {
         headers: {
-          Authorization: `Bearer ${localstorage.accessToken}`,
+          Authorization: `Bearer ${accessToken}`,
         },
       });
-      console.log(res);
     } else {
       const textQueryVariables = {
         chat: text,
       };
-      const res = await axios.post(`${URLS.API}/api/chat`, textQueryVariables, {
-        headers: {
-          Authorization: `Bearer ${localstorage.accessToken}`,
-        },
-      });
-      console.log(res);
+      await axios
+        .post(`${URLS.API}/api/chat`, textQueryVariables, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        })
+        .then((res) => {
+          dispatch(saveId(res.data.titleId));
+        });
     }
+    setRefresh(!refresh);
+    console.log(refresh);
   };
 
   // 질문할때 빈칸이면 alert 띄우기
@@ -60,24 +66,27 @@ const GPTfunction = () => {
     const searchParams = new URLSearchParams(window.location.search);
     let accessToken = searchParams.get("refresh_token");
 
-    console.log(idFromRedux, "idFromRedux");
-    if (idFromRedux) {
-      axios
-        .get(`${URLS.API}/api/chat/${idFromRedux}`, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        })
-        .then((res) => {
-          console.log(res.data);
-          // console.log(chat.length, "ㅁㄴㅇㄹ");
-          if (res) {
-            console.log(res.data, "ㅁㄴㅇㄹ");
+    async function getChat() {
+      if (idFromRedux) {
+        await axios
+          .get(`${URLS.API}/api/chat/${idFromRedux}`, {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          })
+          .then((res) => {
             setChat(res.data);
-          }
-        });
+            if (scrollRef.current) {
+              scrollRef.current.scrollIntoView({
+                behavior: "smooth",
+                block: "end",
+              });
+            }
+          });
+      }
     }
-  }, [idFromRedux]);
+    getChat();
+  }, [idFromRedux, refresh]);
 
   return (
     <Styled.BodyContainer>
@@ -94,8 +103,10 @@ const GPTfunction = () => {
               i: number
             ) => (
               <>
-                <Styled.UserText key={i}>{message.chat}</Styled.UserText>
-                <Styled.GPTContainer key={i}>
+                <Styled.UserText key={message.chat}>
+                  {message.chat}
+                </Styled.UserText>
+                <Styled.GPTContainer key={message.answer} ref={scrollRef}>
                   <Styled.NameContainer>
                     <Styled.IconBox>
                       <IconChat height="1.5rem" width="1.5rem" fill="white" />
