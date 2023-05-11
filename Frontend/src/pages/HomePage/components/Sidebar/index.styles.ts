@@ -47,6 +47,15 @@ export const SubjectContainer = styled.div`
   }
 `;
 
+export const SubjectContentBox = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
 export const SubjectBox = styled.div`
   display: flex;
   align-items: center;
@@ -55,7 +64,7 @@ export const SubjectBox = styled.div`
 export const Content = styled.h4`
   width: 11rem;
   padding-left: 0.5rem;
-  margin: 1rem 0;
+  margin: 0;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -75,6 +84,9 @@ export const HomeContainer = styled.div`
   width: 100%;
   background-color: #e4e3ff;
   border-radius: 6px;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const HomeBox = styled.div`
@@ -90,8 +102,14 @@ export const HomeName = styled.h3`
   margin: 0.7rem 0 0.7rem 1rem;
 `;
 export const LogoutContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 16rem;
   height: 3rem;
+  &: hover {
+    cursor: pointer;
+  }
 `;
 
 export const LogoutBox = styled.div`
@@ -105,4 +123,10 @@ export const LogoutBox = styled.div`
 export const LogoutName = styled.h4`
   margin-left: 1rem;
   color: #cccbd8;
+`;
+
+export const IconBox = styled.div`
+  &:hover {
+    cursor: pointer;
+  }
 `;
