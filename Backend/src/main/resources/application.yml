@@ -12,6 +12,9 @@ spring:
 #  config:
 #    activate:
 #      on-profile: dev
+  mvc:
+    path match:
+      matching-strategy: ant_path_matcher
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: ENC(et9ctHQkIQt6airWEph33/xrMlS8gAsocRbwMF3yMevRSljWFqheOOmMCfWKLZsSV6jxUn01P20=)
