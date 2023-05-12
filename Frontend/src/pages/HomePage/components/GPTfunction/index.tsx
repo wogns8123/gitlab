@@ -66,27 +66,27 @@ const GPTfunction = () => {
     const searchParams = new URLSearchParams(window.location.search);
     let accessToken = searchParams.get("refresh_token");
 
-    async function getChat() {
-      if (idFromRedux) {
-        await axios
-          .get(`${URLS.API}/api/chat/${idFromRedux}`, {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          })
-          .then((res) => {
-            setChat(res.data);
-            if (scrollRef.current) {
-              scrollRef.current.scrollIntoView({
-                behavior: "smooth",
-                block: "end",
-              });
-            }
-          });
-      }
+    if (idFromRedux) {
+      axios
+        .get(`${URLS.API}/api/chat/${idFromRedux}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        })
+        .then((res) => {
+          setChat(res.data);
+        });
     }
-    getChat();
   }, [idFromRedux, refresh]);
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+      });
+    }
+  }, [chat]);
 
   return (
     <Styled.BodyContainer>
