@@ -98,10 +98,7 @@ const GPTfunction = () => {
       ) : (
         <Styled.Content>
           {chat.map(
-            (
-              message: { request_id: number; answer: string; chat: string },
-              i: number
-            ) => (
+            (message: { request_id: number; answer: string; chat: string }) => (
               <>
                 <Styled.UserText key={message.chat}>
                   {message.chat}
