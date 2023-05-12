@@ -68,7 +68,7 @@ export const Content = styled.div`
 `;
 
 export const GPTContainer = styled.div`
-  margin: 2.5rem 0;
+  padding: 2.5rem 0 3rem 0;
 `;
 
 export const NameContainer = styled.div`
@@ -98,8 +98,6 @@ export const Text = styled.div`
   line-height: 2em;
 `;
 export const UserText = styled(Text)`
-  //display: flex;
-  //flex-direction: row-reverse;
   background-color: #4c49ed;
   color: white;
   position: relative;
