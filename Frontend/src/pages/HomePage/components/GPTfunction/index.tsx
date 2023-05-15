@@ -105,9 +105,11 @@ const GPTfunction = () => {
           {chat.map(
             (message: { request_id: number; answer: string; chat: string }) => (
               <>
-                <Styled.UserText key={message.chat}>
-                  {message.chat}
-                </Styled.UserText>
+                <Styled.UserTextContainer>
+                  <Styled.UserText key={message.chat}>
+                    {message.chat}
+                  </Styled.UserText>
+                </Styled.UserTextContainer>
                 <Styled.GPTContainer key={message.answer} ref={scrollRef}>
                   <Styled.NameContainer>
                     <Styled.IconBox>
@@ -120,7 +122,13 @@ const GPTfunction = () => {
               </>
             )
           )}
-          {flag ? <Styled.UserText>{tempText}</Styled.UserText> : void 0}
+          {flag ? (
+            <Styled.UserTextContainer ref={scrollRef}>
+              <Styled.UserText>{tempText}</Styled.UserText>
+            </Styled.UserTextContainer>
+          ) : (
+            void 0
+          )}
         </Styled.Content>
       )}
       <Styled.InputBox>
