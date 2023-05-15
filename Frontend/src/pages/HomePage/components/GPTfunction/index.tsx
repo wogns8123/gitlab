@@ -6,13 +6,15 @@ import React, {
   useRef,
 } from "react";
 import * as Styled from "./index.styles";
-import { IconChat, IconSend } from "../../../../common/icons";
+import { IconChat, IconSend } from "common/icons";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import URLS from "../../../../constants/url";
-import { saveId } from "../../../../_actions/id_actions";
+import URLS from "constants/url";
+import { saveId } from "_actions/id_actions";
 
 const GPTfunction = () => {
+  const [tempText, setTempText] = useState("");
+  const [flag, setFlag] = useState(false);
   const dispatch = useDispatch();
   const scrollRef = useRef<HTMLDivElement>(null);
   const idFromRedux = useSelector((state: any) => state.id);
@@ -46,7 +48,6 @@ const GPTfunction = () => {
         });
     }
     setRefresh(!refresh);
-    console.log(refresh);
   };
 
   // 질문할때 빈칸이면 alert 띄우기
@@ -57,6 +58,8 @@ const GPTfunction = () => {
       if (!e.target.value) {
         return alert("입력하세요");
       }
+      setFlag(true);
+      setTempText(e.target.value);
       textQuery(e.target.value);
       e.target.value = "";
     }
@@ -74,6 +77,7 @@ const GPTfunction = () => {
           },
         })
         .then((res) => {
+          setFlag(false);
           setChat(res.data);
         });
     }
@@ -101,7 +105,7 @@ const GPTfunction = () => {
             (message: { request_id: number; answer: string; chat: string }) => (
               <>
                 <Styled.UserText key={message.chat}>
-                  {message.chat}
+                  {flag ? tempText : message.chat}
                 </Styled.UserText>
                 <Styled.GPTContainer key={message.answer} ref={scrollRef}>
                   <Styled.NameContainer>

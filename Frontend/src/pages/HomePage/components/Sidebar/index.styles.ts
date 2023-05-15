@@ -28,7 +28,8 @@ export const SidebarBox = styled.div`
 
 export const SubjectContainer = styled.div`
   width: 87%;
-  height: 26rem;
+  //height: 26rem;
+  height: 59vh;
   overflow: auto;
   padding: 0 1rem;
   ::-webkit-scrollbar {
