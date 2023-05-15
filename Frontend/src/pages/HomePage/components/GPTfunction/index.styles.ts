@@ -70,7 +70,7 @@ export const Content = styled.div`
 `;
 
 export const GPTContainer = styled.div`
-  padding: 2.5rem 0 3rem 0;
+  padding-bottom: 3rem;
 `;
 
 export const NameContainer = styled.div`
@@ -99,6 +99,10 @@ export const Text = styled.div`
   border-radius: 10px;
   line-height: 2em;
 `;
+export const UserTextContainer = styled.div`
+  padding-bottom: 3rem;
+`;
+
 export const UserText = styled(Text)`
   background-color: #4c49ed;
   color: white;
