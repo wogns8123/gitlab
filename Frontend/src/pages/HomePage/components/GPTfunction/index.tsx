@@ -78,6 +78,7 @@ const GPTfunction = () => {
         })
         .then((res) => {
           setFlag(false);
+          setTempText("");
           setChat(res.data);
         });
     }
@@ -90,11 +91,11 @@ const GPTfunction = () => {
         block: "end",
       });
     }
-  }, [chat]);
+  }, [chat, tempText]);
 
   return (
     <Styled.BodyContainer>
-      {chat.length === 0 ? (
+      {chat.length === 0 && !tempText ? (
         <>
           <Styled.LogoName>CustomGPT</Styled.LogoName>
           <Styled.SubName>우리들의 개발지식 멘토</Styled.SubName>
