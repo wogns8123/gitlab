@@ -2,8 +2,10 @@ import styled from "styled-components";
 
 export const BodyContainer = styled.div`
   background-color: white;
-  height: 40rem;
-  width: 71rem;
+  //height: 40rem;
+  //width: 71rem;
+  height: 87vh;
+  width: 74vw;
   margin-left: 4.5rem;
   border-radius: 30px;
   display: flex;

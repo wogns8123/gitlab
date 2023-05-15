@@ -14,7 +14,6 @@ import { useNavigate } from "react-router-dom";
 const Sidebar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [refresh, setRefresh] = useState(false);
   const [titles, setTitles] = useState([]);
   const idFromRedux = useSelector((state: any) => state.id);
 
@@ -30,6 +29,9 @@ const Sidebar = () => {
       })
       .then((res) => {
         setTitles(res.data.titles);
+      })
+      .catch(() => {
+        navigate("/");
       });
   }, [idFromRedux]);
 
