@@ -105,7 +105,7 @@ const GPTfunction = () => {
             (message: { request_id: number; answer: string; chat: string }) => (
               <>
                 <Styled.UserText key={message.chat}>
-                  {flag ? tempText : message.chat}
+                  {message.chat}
                 </Styled.UserText>
                 <Styled.GPTContainer key={message.answer} ref={scrollRef}>
                   <Styled.NameContainer>
@@ -119,6 +119,7 @@ const GPTfunction = () => {
               </>
             )
           )}
+          {flag ? <Styled.UserText>{tempText}</Styled.UserText> : void 0}
         </Styled.Content>
       )}
       <Styled.InputBox>
