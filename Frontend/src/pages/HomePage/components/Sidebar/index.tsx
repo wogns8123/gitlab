@@ -15,6 +15,7 @@ const Sidebar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [titles, setTitles] = useState([]);
+  const [nickname, setNickname] = useState("");
   const idFromRedux = useSelector((state: any) => state.id);
 
   useEffect(() => {
@@ -29,6 +30,7 @@ const Sidebar = () => {
       })
       .then((res) => {
         setTitles(res.data.titles);
+        setNickname(res.data.nickname);
       })
       .catch(() => {
         navigate("/");
@@ -93,6 +95,7 @@ const Sidebar = () => {
               <Styled.HomeName>New chat</Styled.HomeName>
             </Styled.HomeBox>
           </Styled.HomeContainer>
+          {/*<Styled.NicknameBox>{nickname}</Styled.NicknameBox>*/}
         </Styled.MenuContainer>
         <Styled.LogoutContainer onClick={onClickLogout}>
           <Styled.LogoutBox>

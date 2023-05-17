@@ -131,3 +131,7 @@ export const IconBox = styled.div`
     cursor: pointer;
   }
 `;
+
+export const NicknameBox = styled.div`
+  margin-top: 3rem;
+`;

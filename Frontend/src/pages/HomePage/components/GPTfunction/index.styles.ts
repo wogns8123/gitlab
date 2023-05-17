@@ -113,3 +113,13 @@ export const UserText = styled(Text)`
 export const GPTText = styled(Text)`
   background-color: #e4e3ff;
 `;
+
+export const LottieBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 68%;
+  position: fixed;
+  top: 0rem;
+`;
