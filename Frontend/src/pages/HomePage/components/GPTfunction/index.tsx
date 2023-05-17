@@ -11,6 +11,8 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import URLS from "constants/url";
 import { saveId } from "_actions/id_actions";
+import Lottie from "react-lottie";
+import animationData from "assets/lotties/loading.json";
 
 const GPTfunction = () => {
   const [tempText, setTempText] = useState("");
@@ -20,6 +22,14 @@ const GPTfunction = () => {
   const idFromRedux = useSelector((state: any) => state.id);
   const [chat, setChat] = useState([]);
   const [refresh, setRefresh] = useState(false);
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
   const textQuery = async (text: string) => {
     const searchParams = new URLSearchParams(window.location.search);
     let accessToken = searchParams.get("refresh_token");
@@ -105,10 +115,8 @@ const GPTfunction = () => {
           {chat.map(
             (message: { request_id: number; answer: string; chat: string }) => (
               <>
-                <Styled.UserTextContainer>
-                  <Styled.UserText key={message.chat}>
-                    {message.chat}
-                  </Styled.UserText>
+                <Styled.UserTextContainer key={message.request_id}>
+                  <Styled.UserText>{message.chat}</Styled.UserText>
                 </Styled.UserTextContainer>
                 <Styled.GPTContainer key={message.answer} ref={scrollRef}>
                   <Styled.NameContainer>
@@ -123,9 +131,14 @@ const GPTfunction = () => {
             )
           )}
           {flag ? (
-            <Styled.UserTextContainer ref={scrollRef}>
-              <Styled.UserText>{tempText}</Styled.UserText>
-            </Styled.UserTextContainer>
+            <>
+              <Styled.UserTextContainer ref={scrollRef}>
+                <Styled.UserText>{tempText}</Styled.UserText>
+              </Styled.UserTextContainer>
+              <Styled.LottieBox>
+                <Lottie options={defaultOptions} height={200} width={200} />
+              </Styled.LottieBox>
+            </>
           ) : (
             void 0
           )}
