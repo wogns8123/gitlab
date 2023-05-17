@@ -132,6 +132,14 @@ export const IconBox = styled.div`
   }
 `;
 
-export const NicknameBox = styled.div`
+export const NicknameContainer = styled.div`
+  display: flex;
+  align-items: center;
   margin-top: 3rem;
+  position: relative;
+  right: 1rem;
+`;
+
+export const NicknameBox = styled.div`
+  margin-left: 0.5rem;
 `;

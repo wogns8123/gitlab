@@ -5,6 +5,7 @@ import {
   IconConversation,
   IconHome,
   IconTrashCan,
+  IconUser,
 } from "common/icons";
 import axios from "axios";
 import URLS from "constants/url";
@@ -95,7 +96,10 @@ const Sidebar = () => {
               <Styled.HomeName>New chat</Styled.HomeName>
             </Styled.HomeBox>
           </Styled.HomeContainer>
-          {/*<Styled.NicknameBox>{nickname}</Styled.NicknameBox>*/}
+          <Styled.NicknameContainer>
+            <IconUser height="1.2rem" width="1.2rem" />
+            <Styled.NicknameBox>{nickname}</Styled.NicknameBox>
+          </Styled.NicknameContainer>
         </Styled.MenuContainer>
         <Styled.LogoutContainer onClick={onClickLogout}>
           <Styled.LogoutBox>

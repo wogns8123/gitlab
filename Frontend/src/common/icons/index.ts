@@ -5,5 +5,15 @@ import { ReactComponent as IconArrow } from "assets/svgs/arrow.svg";
 import { ReactComponent as IconSend } from "assets/svgs/send.svg";
 import { ReactComponent as IconGoogle } from "assets/svgs/google.svg";
 import { ReactComponent as IconChat } from "assets/svgs/chat.svg";
+import { ReactComponent as IconUser } from "assets/svgs/user.svg";
 
-export { IconConversation, IconTrashCan, IconHome, IconArrow, IconSend, IconGoogle, IconChat };
+export {
+  IconConversation,
+  IconTrashCan,
+  IconHome,
+  IconArrow,
+  IconSend,
+  IconGoogle,
+  IconChat,
+  IconUser,
+};
