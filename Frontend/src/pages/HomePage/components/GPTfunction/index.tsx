@@ -90,6 +90,7 @@ const GPTfunction = () => {
           setFlag(false);
           setTempText("");
           setChat(res.data);
+          console.log(chat);
         });
     }
   }, [idFromRedux, refresh]);
@@ -125,7 +126,16 @@ const GPTfunction = () => {
                     </Styled.IconBox>
                     <Styled.Logo>CustomGPT</Styled.Logo>
                   </Styled.NameContainer>
-                  <Styled.GPTText>{message.answer}</Styled.GPTText>
+                  <Styled.GPTText>
+                    {message.answer.split("\n").map((text) => {
+                      return (
+                        <>
+                          {text}
+                          <br />
+                        </>
+                      );
+                    })}
+                  </Styled.GPTText>
                 </Styled.GPTContainer>
               </>
             )
