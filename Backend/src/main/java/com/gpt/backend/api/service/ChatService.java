@@ -104,9 +104,11 @@ public class ChatService {
             //TODO Req에 채팅내역저장
         }
 
-        String answer = papagoTranslateService.translate("ko", "en", dto.getChat());
-        answer = gpuService.calculate(answer);
-        answer = papagoTranslateService.translate("en", "ko", answer);
+//        String answer = papagoTranslateService.translate("ko", "en", dto.getChat());
+//        answer = gpuService.calculate(answer);
+        String answer = gpuService.calculate(dto.getChat());
+
+//        answer = papagoTranslateService.translate("en", "ko", answer);
         Title title = titleRepository.findById(dto.getTitleId())
                 .orElseThrow(() -> new IllegalArgumentException("해당 제목이 없습니다."));
         reqRepository.save(Req.builder()
