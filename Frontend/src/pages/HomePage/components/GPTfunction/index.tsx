@@ -90,7 +90,6 @@ const GPTfunction = () => {
           setFlag(false);
           setTempText("");
           setChat(res.data);
-          console.log(chat);
         });
     }
   }, [idFromRedux, refresh]);
