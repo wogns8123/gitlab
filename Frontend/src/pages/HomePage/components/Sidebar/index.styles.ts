@@ -19,7 +19,7 @@ export const SidebarBox = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 85%;
+  width: 100%;
   hr {
     margin-left: 0;
     margin-right: 0;
