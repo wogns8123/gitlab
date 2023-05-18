@@ -6,6 +6,7 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 
@@ -31,13 +32,17 @@ public class PapagoTranslateService {
 
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(requestBody, headers);
 
-        ResponseEntity<String> response = restTemplate.exchange(PAPAGO_API_URL, HttpMethod.POST, request, String.class);
-
+        ResponseEntity<String> response = null;
+        try {
+            response = restTemplate.exchange(PAPAGO_API_URL, HttpMethod.POST, request, String.class);
+        }
+        catch (HttpClientErrorException e) {
+            log.error("Error: {}", e.getResponseBodyAsString());
+            return text;
+        }
         // Process the response and extract the translation result
         // The response will be a JSON object. You can use a JSON library like Jackson to parse it.
         // Here, we just return the raw response as a string.
-        int code = response.getStatusCodeValue();
-        if (code != 200) return text;
         JSONObject jo = new org.json.JSONObject(response.getBody());
         org.json.JSONObject jo2 = (org.json.JSONObject)jo.get("message");
         org.json.JSONObject jo3 = (org.json.JSONObject)jo2.get("result");
