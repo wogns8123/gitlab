@@ -36,7 +36,9 @@ public class PapagoTranslateService {
         // Process the response and extract the translation result
         // The response will be a JSON object. You can use a JSON library like Jackson to parse it.
         // Here, we just return the raw response as a string.
-        JSONObject jo = new org.json.JSONObject(response.getBody().toString());
+        int code = response.getStatusCodeValue();
+        if (code != 200) return text;
+        JSONObject jo = new org.json.JSONObject(response.getBody());
         org.json.JSONObject jo2 = (org.json.JSONObject)jo.get("message");
         org.json.JSONObject jo3 = (org.json.JSONObject)jo2.get("result");
         log.info(jo3.toString());
