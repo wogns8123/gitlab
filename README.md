@@ -4,7 +4,7 @@
 
 **"sLLM을 이용한 내부 AI 챗봇 제작"**
 
-Site : [customgptchat.com](customgptchat.com)
+Site : [customgptchat.com](https://customgptchat.com)
 
 Period : 2023.04.10 ~ 2023.05.19 (5인 6주)
 
