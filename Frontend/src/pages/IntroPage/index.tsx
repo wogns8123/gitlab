@@ -1,6 +1,6 @@
 import React from "react";
 import * as Styled from "./index.styles";
-import GoogleLoginButton from "./components/GoogleLoginButton";
+import GoogleLoginButton from "./components/GoogleLonginButton";
 
 const IntroPage = () => {
   return (
