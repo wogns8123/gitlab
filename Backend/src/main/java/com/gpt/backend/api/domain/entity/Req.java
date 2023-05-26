@@ -25,7 +25,7 @@ public class Req {
 
     @Column
     private String chat;
-    @Column
+    @Column(length = 2000)
     private String answer;
 
 }
